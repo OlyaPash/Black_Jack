@@ -15,6 +15,6 @@ class CardDeck
   def give_random_card
     # @deck[rand(@deck.length)]
     @cards = @deck.sample(2)
-    @deck.delete(@cards)
+    # @deck.delete(@cards)
   end
 end
