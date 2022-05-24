@@ -14,4 +14,28 @@ Metrics/AbcSize:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 25 
+  Max: 25
+
+Metrics/ClassLength:
+  Max: 122
+
+Lint/UnusedBlockArgument:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Lint/Void:
+  Enabled: false  
+
+Style/RedundantArgument:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 11        
+
+Metrics/PerceivedComplexity:
+  Max: 12 

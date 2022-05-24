@@ -17,4 +17,3 @@ class Bank
     self.balance_bank += @bet
   end
 end
-

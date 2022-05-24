@@ -38,9 +38,9 @@ class Game
     puts "Началась раздача"
     @user.new_round
     @dealer.new_round
-    2.times {user.add_cards(card_deck)}
+    2.times { user.add_cards(card_deck) }
     puts "Вы получили карты : #{user.cards_on_hand}"
-    2.times {@dealer.add_cards(card_deck)}
+    2.times { @dealer.add_cards(card_deck) }
     puts "Карты #{dealer.name}а: #{@dealer.close_cards}"
     @bank.take(user)
     @bank.take(dealer)
@@ -51,7 +51,7 @@ class Game
   end
 
   def user_choice
-    @user.open_cards && winner if @dealer.cards_on_hand.count == 3 && @user.cards_on_hand.count == 3
+    open if @dealer.cards_on_hand.count == 3 && @user.cards_on_hand.count == 3
     puts "Ваш ход, #{user.name}"
     puts "1 - Пропустить"
     puts "2 - Добавить карту"
@@ -82,7 +82,8 @@ class Game
       open
     when 0
       puts "До свидания!"
-    end  
+      abort
+    end
   end
 
   def open
@@ -113,7 +114,7 @@ class Game
     @user_points = @card_deck.count_points(user.cards_on_hand)
     @dealer_points = @card_deck.count_points(dealer.cards_on_hand)
 
-    if @user_points > @dealer_points && @user_points <= 21 || @user_points <= 21 && @dealer_points > 21
+    if (@user_points > @dealer_points && @user_points <= 21) || (@user_points <= 21 && @dealer_points > 21)
       puts "Поздравляем! Вы выиграли раздачу, сумма в вашем банке #{@user.balance += @bank.balance_bank}$"
       puts "Банк #{dealer.name}а: #{@dealer.balance}$"
       @bank.balance_bank = 0
@@ -145,5 +146,4 @@ class Game
   # - Если сумма очков у игрока и дилера одинаковая,
   # то объявляется ничья и деньги из банка возвращаются игрокам
   # - Сумма из банка игры переходит к выигравшему
-
 end
