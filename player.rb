@@ -18,7 +18,10 @@ class Player
   end
 
   def open_cards
-    @cards_on_hand.each { |card| card  }
+    @cards_on_hand.each { |card| card }
   end
 
+  def new_round
+    @cards_on_hand = []
+  end
 end

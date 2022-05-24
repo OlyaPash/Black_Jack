@@ -2,7 +2,8 @@
 
 class CardDeck
   attr_accessor :points
-  attr_reader :card_deck, :cards
+  attr_reader :card_deck, :cards, :deck_hash, :deck_arr
+
   # массив карт
   def initialize
     @deck_hash = {
@@ -18,10 +19,10 @@ class CardDeck
   end
 
   def give_random_card
-    deck_arr =[]
-    @deck_hash.each { |cards, _volue| deck_arr << cards}
-    card = deck_arr.sample
-    deck_arr.delete(card)
+    @deck_arr = []
+    @deck_hash.each { |cards, _volue| @deck_arr << cards}
+    card = @deck_arr.sample
+    @deck_arr.delete(card)
     card
   end
 
@@ -40,7 +41,4 @@ class CardDeck
   # все «картинки» - по 10, 
   # туз - 1 или 11, в зависимости от того, 
   # какое значение будет ближе к 21 и что не ведет к проигрышу (сумме более 21).
-
-  
-
 end
